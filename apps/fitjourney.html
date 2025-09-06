@@ -4,75 +4,152 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FitJourney</title>
-  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    header p {
+      margin: 10px 0 0;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .tabs button {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .tabs button.active {
+      background: #fff;
+      color: #ff7e5f;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .card {
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .pricing-card {
+      flex: 1 1 200px;
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .pricing-card h3 { margin-top: 0; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
-  <nav class="main-nav">
-    <a href="../index.html">Home</a>
-    <a href="../app-list.html">Apps</a>
-  </nav>
-  <section class="hero">
+  <header>
     <h1>FitJourney</h1>
-    <p>Every step counts</p>
-    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200" alt="Runner on path" />
-  </section>
-
-  <section class="pricing">
-    <h2>Pricing</h2>
-    <div class="pricing-cards">
-      <div class="pricing-card">
-        <h3>Free</h3>
-        <ul>
-          <li>Basic workout logging</li>
-          <li>Progress charts</li>
-        </ul>
-        <p><strong>$0/mo</strong></p>
-      </div>
-      <div class="pricing-card">
-        <h3>Plus</h3>
-        <ul>
-          <li>Personalized plans</li>
-          <li>Challenge friends</li>
-        </ul>
-        <p><strong>$8/mo</strong></p>
-      </div>
-      <div class="pricing-card">
-        <h3>Coach</h3>
-        <ul>
-          <li>One-on-one virtual coaching</li>
-          <li>Nutrition guidance</li>
-        </ul>
-        <p><strong>$20/mo</strong></p>
+    <p>"Every step counts"</p>
+  </header>
+  <main>
+    <div class="tabs">
+      <button class="active" data-tab="overview">Overview</button>
+      <button data-tab="features">Features</button>
+      <button data-tab="pricing">Pricing</button>
+    </div>
+    <div id="overview" class="tab-content active">
+      <div class="card">
+        <h2>Introduction</h2>
+        <p>FitJourney helps you stay active by tracking workouts, monitoring progress, and providing personalized fitness goals.</p>
       </div>
     </div>
-  </section>
-
-  <section class="journey">
-    <h2>Your Journey</h2>
-    <div class="timeline">
-      <div class="step">
-        <div class="icon">🏁</div>
-        <p>Set your fitness goals.</p>
-      </div>
-      <div class="step">
-        <div class="icon">📝</div>
-        <p>Log workouts and track progress.</p>
-      </div>
-      <div class="step">
-        <div class="icon">🎉</div>
-        <p>Celebrate milestones and stay motivated.</p>
+    <div id="features" class="tab-content">
+      <div class="card">
+        <h2>User Journeys</h2>
+        <ul>
+          <li>Log daily workouts and compare performance over time.</li>
+          <li>Join challenges with friends for extra motivation.</li>
+          <li>Receive tailored workout plans based on your goals.</li>
+        </ul>
       </div>
     </div>
-  </section>
-
+    <div id="pricing" class="tab-content">
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <p>Basic workout logging and progress charts.</p>
+          <p><strong>$0/mo</strong></p>
+        </div>
+        <div class="pricing-card">
+          <h3>Plus</h3>
+          <p>Personalized plans and challenge features.</p>
+          <p><strong>$8/mo</strong></p>
+        </div>
+        <div class="pricing-card">
+          <h3>Coach</h3>
+          <p>One-on-one virtual coaching.</p>
+          <p><strong>$20/mo</strong></p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    &copy; 2024 FitJourney. All rights reserved.
+  </footer>
   <script>
-    const steps = document.querySelectorAll('.step');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+    const tabs = document.querySelectorAll('.tabs button');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
       });
     });
-    steps.forEach(step => observer.observe(step));
   </script>
 </body>
 </html>
