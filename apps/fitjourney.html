@@ -18,19 +18,70 @@
     header h1 {
       font-size: 3rem;
       margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     header p {
       margin: 10px 0 0;
       font-size: 1.2rem;
+      font-style: italic;
     }
     main {
-      background: rgba(0,0,0,0.3);
-      padding: 20px;
-    }
-    section {
+      max-width: 900px;
       margin: 40px auto;
-      max-width: 800px;
+      padding: 0 20px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
     }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .tabs button {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .tabs button.active {
+      background: #fff;
+      color: #ff7e5f;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .card {
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .pricing-card {
+      flex: 1 1 200px;
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .pricing-card h3 { margin-top: 0; }
     footer {
       text-align: center;
       padding: 20px;
@@ -44,29 +95,61 @@
     <p>"Every step counts"</p>
   </header>
   <main>
-    <section>
-      <h2>Introduction</h2>
-      <p>FitJourney helps you stay active by tracking workouts, monitoring progress, and providing personalized fitness goals.</p>
-    </section>
-    <section>
-      <h2>User Journeys</h2>
-      <ul>
-        <li>Log daily workouts and compare performance over time.</li>
-        <li>Join challenges with friends for extra motivation.</li>
-        <li>Receive tailored workout plans based on your goals.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Pricing</h2>
-      <ul>
-        <li>Free: Basic workout logging and progress charts.</li>
-        <li>Plus: $8/month for personalized plans and challenge features.</li>
-        <li>Coach: $20/month for one-on-one virtual coaching.</li>
-      </ul>
-    </section>
+    <div class="tabs">
+      <button class="active" data-tab="overview">Overview</button>
+      <button data-tab="features">Features</button>
+      <button data-tab="pricing">Pricing</button>
+    </div>
+    <div id="overview" class="tab-content active">
+      <div class="card">
+        <h2>Introduction</h2>
+        <p>FitJourney helps you stay active by tracking workouts, monitoring progress, and providing personalized fitness goals.</p>
+      </div>
+    </div>
+    <div id="features" class="tab-content">
+      <div class="card">
+        <h2>User Journeys</h2>
+        <ul>
+          <li>Log daily workouts and compare performance over time.</li>
+          <li>Join challenges with friends for extra motivation.</li>
+          <li>Receive tailored workout plans based on your goals.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="pricing" class="tab-content">
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <p>Basic workout logging and progress charts.</p>
+          <p><strong>$0/mo</strong></p>
+        </div>
+        <div class="pricing-card">
+          <h3>Plus</h3>
+          <p>Personalized plans and challenge features.</p>
+          <p><strong>$8/mo</strong></p>
+        </div>
+        <div class="pricing-card">
+          <h3>Coach</h3>
+          <p>One-on-one virtual coaching.</p>
+          <p><strong>$20/mo</strong></p>
+        </div>
+      </div>
+    </div>
   </main>
   <footer>
     &copy; 2024 FitJourney. All rights reserved.
   </footer>
+  <script>
+    const tabs = document.querySelectorAll('.tabs button');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

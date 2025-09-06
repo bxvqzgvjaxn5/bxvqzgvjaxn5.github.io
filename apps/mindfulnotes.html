@@ -13,19 +13,76 @@
     }
     header {
       text-align: center;
-      padding: 50px 20px;
-      background: #d8c7ff;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #d8c7ff, #b8a8ff);
+      color: #333;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-style: italic;
     }
     main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .tabs button {
+      background: #d8c7ff;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      color: #333;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .tabs button.active {
+      background: #b8a8ff;
+      color: #fff;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .card {
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .pricing-card {
+      flex: 1 1 200px;
+      background: #fff;
+      color: #333;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .pricing-card h3 { margin-top: 0; }
     footer {
       text-align: center;
       padding: 20px;
-      background: #d8c7ff;
+      background: linear-gradient(135deg, #d8c7ff, #b8a8ff);
+      color: #333;
     }
   </style>
 </head>
@@ -35,29 +92,61 @@
     <p>"Write with clarity, reflect with calm"</p>
   </header>
   <main>
-    <section>
-      <h2>Introduction</h2>
-      <p>MindfulNotes combines note-taking with mindfulness prompts to help you organize thoughts and maintain mental well-being.</p>
-    </section>
-    <section>
-      <h2>User Journeys</h2>
-      <ul>
-        <li>Capture ideas and reflect with guided prompts.</li>
-        <li>Create journals for different aspects of your life.</li>
-        <li>Review past notes to track personal growth.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Pricing</h2>
-      <ul>
-        <li>Free: Unlimited notes with basic prompts.</li>
-        <li>Premium: $4/month for advanced reflections and export options.</li>
-        <li>Lifetime: $50 one-time purchase for full access.</li>
-      </ul>
-    </section>
+    <div class="tabs">
+      <button class="active" data-tab="overview">Overview</button>
+      <button data-tab="features">Features</button>
+      <button data-tab="pricing">Pricing</button>
+    </div>
+    <div id="overview" class="tab-content active">
+      <div class="card">
+        <h2>Introduction</h2>
+        <p>MindfulNotes combines note-taking with mindfulness prompts to help you organize thoughts and maintain mental well-being.</p>
+      </div>
+    </div>
+    <div id="features" class="tab-content">
+      <div class="card">
+        <h2>User Journeys</h2>
+        <ul>
+          <li>Capture ideas and reflect with guided prompts.</li>
+          <li>Create journals for different aspects of your life.</li>
+          <li>Review past notes to track personal growth.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="pricing" class="tab-content">
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <p>Unlimited notes with basic prompts.</p>
+          <p><strong>$0/mo</strong></p>
+        </div>
+        <div class="pricing-card">
+          <h3>Premium</h3>
+          <p>Advanced reflections and export options.</p>
+          <p><strong>$4/mo</strong></p>
+        </div>
+        <div class="pricing-card">
+          <h3>Lifetime</h3>
+          <p>Full access with a one-time purchase.</p>
+          <p><strong>$50</strong></p>
+        </div>
+      </div>
+    </div>
   </main>
   <footer>
     &copy; 2024 MindfulNotes. All rights reserved.
   </footer>
+  <script>
+    const tabs = document.querySelectorAll('.tabs button');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

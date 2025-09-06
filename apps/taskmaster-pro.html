@@ -6,30 +6,83 @@
   <title>TaskMaster Pro</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background: #2c3e50;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
       color: #ecf0f1;
     }
     header {
-      background: #1abc9c;
-      padding: 40px 20px;
       text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #1abc9c, #16a085);
+      color: #fff;
     }
     header h1 {
       margin: 0;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
     header p {
-      margin: 10px 0 0;
+      margin-top: 10px;
+      font-size: 1.2rem;
       font-style: italic;
     }
     main {
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-    section {
-      margin-bottom: 40px;
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .tabs button {
+      background: #34495e;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      color: #ecf0f1;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .tabs button.active {
+      background: #1abc9c;
+      color: #2c3e50;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .card {
+      background: #fff;
+      color: #2c3e50;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .pricing-card {
+      flex: 1 1 200px;
+      background: #fff;
+      color: #2c3e50;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .pricing-card h3 {
+      margin-top: 0;
     }
     footer {
       text-align: center;
@@ -45,29 +98,61 @@
     <p>"Dominate your day with precision"</p>
   </header>
   <main>
-    <section>
-      <h2>Introduction</h2>
-      <p>TaskMaster Pro streamlines your workflow with intelligent task management and scheduling tools designed for busy professionals.</p>
-    </section>
-    <section>
-      <h2>User Journeys</h2>
-      <ul>
-        <li>Plan your day with drag-and-drop task scheduling.</li>
-        <li>Receive smart reminders before deadlines.</li>
-        <li>Collaborate with teammates on shared projects.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Pricing</h2>
-      <ul>
-        <li>Free: Basic task tracking for individuals.</li>
-        <li>Pro: $5/month for advanced scheduling and integrations.</li>
-        <li>Enterprise: Contact us for custom solutions.</li>
-      </ul>
-    </section>
+    <div class="tabs">
+      <button class="active" data-tab="overview">Overview</button>
+      <button data-tab="features">Features</button>
+      <button data-tab="pricing">Pricing</button>
+    </div>
+    <div id="overview" class="tab-content active">
+      <div class="card">
+        <h2>Introduction</h2>
+        <p>TaskMaster Pro streamlines your workflow with intelligent task management and scheduling tools designed for busy professionals.</p>
+      </div>
+    </div>
+    <div id="features" class="tab-content">
+      <div class="card">
+        <h2>User Journeys</h2>
+        <ul>
+          <li>Plan your day with drag-and-drop task scheduling.</li>
+          <li>Receive smart reminders before deadlines.</li>
+          <li>Collaborate with teammates on shared projects.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="pricing" class="tab-content">
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <p>Basic task tracking for individuals.</p>
+          <p><strong>$0/mo</strong></p>
+        </div>
+        <div class="pricing-card">
+          <h3>Pro</h3>
+          <p>Advanced scheduling and integrations.</p>
+          <p><strong>$5/mo</strong></p>
+        </div>
+        <div class="pricing-card">
+          <h3>Enterprise</h3>
+          <p>Custom solutions for your organization.</p>
+          <p><strong>Contact us</strong></p>
+        </div>
+      </div>
+    </div>
   </main>
   <footer>
     &copy; 2024 TaskMaster Pro. All rights reserved.
   </footer>
+  <script>
+    const tabs = document.querySelectorAll('.tabs button');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
