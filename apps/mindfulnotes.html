@@ -5,148 +5,180 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MindfulNotes</title>
   <style>
-    body {
-      font-family: 'Georgia', serif;
-      margin: 0;
-      background: #f0e6ff;
-      color: #333;
-    }
-    header {
+    body { margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+    .logo { font-weight: bold; font-size: 1.5rem; }
+    nav a { margin: 0 15px; text-decoration: none; color: #1a1a1a; }
+    .cta { padding: 15px 30px; background: #1a1a1a; color: #fff; text-decoration: none; border-radius: 5px; display: inline-block; }
+    .hero {
       text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #d8c7ff, #b8a8ff);
-      color: #333;
+      padding: 100px 20px;
+      background: linear-gradient(120deg, #fbc2eb, #a6c1ee, #d8c7ff);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
     }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      font-style: italic;
+    .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 40px; }
+    .hero .cta { margin: 0 10px; }
+    .logos {
+      overflow: hidden;
+      padding: 40px 0;
     }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .tabs {
+    .logos-track {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
+      align-items: center;
+      gap: 40px;
+      animation: scroll 40s linear infinite;
+      animation-direction: reverse;
     }
-    .tabs button {
-      background: #d8c7ff;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      color: #333;
-      cursor: pointer;
-      border-radius: 5px;
+    .logos-track img {
+      height: 50px;
+      width: auto;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: filter 0.3s, opacity 0.3s;
     }
-    .tabs button.active {
-      background: #b8a8ff;
-      color: #fff;
+    .logos-track img:hover { filter: none; opacity: 1; }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    .card {
-      background: #fff;
-      color: #333;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .pricing-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .pricing-card {
-      flex: 1 1 200px;
-      background: #fff;
-      color: #333;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .pricing-card h3 { margin-top: 0; }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: linear-gradient(135deg, #d8c7ff, #b8a8ff);
-      color: #333;
+    .features { padding: 80px 20px; background: #f9f9f9; }
+    .features h2 { text-align: center; margin-bottom: 60px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .feature { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+    .feature h3 { margin-top: 0; }
+    .testimonial { padding: 80px 20px; text-align: center; }
+    .testimonial blockquote { font-size: 1.2rem; font-style: italic; margin: 0 auto 20px; max-width: 600px; }
+    .pricing { background: #f9f9f9; padding: 80px 20px; }
+    .pricing h2 { text-align: center; margin-bottom: 60px; }
+    .pricing-table { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+    .plan { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); flex: 1 1 250px; text-align: center; }
+    .plan h3 { margin-top: 0; }
+    .plan ul { list-style: none; padding: 0; }
+    .plan li { margin: 10px 0; }
+    .final-cta { text-align: center; padding: 80px 20px; }
+    .final-cta a { padding: 15px 30px; background: #1a1a1a; color: #fff; text-decoration: none; border-radius: 5px; }
+    footer { background: #1a1a1a; color: #fff; text-align: center; padding: 20px; }
+    footer a { color: #fff; margin: 0 10px; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; padding: 20px; }
+      nav { margin: 10px 0; }
+      nav a { margin: 5px 10px; display: inline-block; }
+      header .cta { margin-top: 10px; padding: 10px 20px; }
+      .hero { padding: 60px 20px; }
+      .hero h1 { font-size: 2rem; }
+      .hero .cta { margin: 10px 0; width: 100%; max-width: 250px; }
+      .logos-track { gap: 20px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>MindfulNotes</h1>
-    <p>"Write with clarity, reflect with calm"</p>
+    <div class="logo">MindfulNotes</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="cta" href="#">Sign In</a>
   </header>
-  <main>
-    <div class="tabs">
-      <button class="active" data-tab="overview">Overview</button>
-      <button data-tab="features">Features</button>
-      <button data-tab="pricing">Pricing</button>
+
+  <section class="hero">
+    <h1>Organize Your Mind with Ease</h1>
+    <p>Capture thoughts and reflect with gentle prompts designed to keep you centered.</p>
+    <a class="cta" href="#pricing">Start Free</a>
+    <a class="cta" href="#features">Explore Features</a>
+  </section>
+
+  <section class="logos">
+    <div class="logos-track">
+      <img src="https://logo.clearbit.com/notion.so?size=100" alt="Notion logo" />
+      <img src="https://logo.clearbit.com/evernote.com?size=100" alt="Evernote logo" />
+      <img src="https://logo.clearbit.com/onenote.com?size=100" alt="OneNote logo" />
+      <img src="https://logo.clearbit.com/keep.google.com?size=100" alt="Google Keep logo" />
+      <img src="https://logo.clearbit.com/dropbox.com?size=100" alt="Dropbox logo" />
+      <img src="https://logo.clearbit.com/slack.com?size=100" alt="Slack logo" />
+      <img src="https://logo.clearbit.com/notion.so?size=100" alt="Notion logo" />
+      <img src="https://logo.clearbit.com/evernote.com?size=100" alt="Evernote logo" />
+      <img src="https://logo.clearbit.com/onenote.com?size=100" alt="OneNote logo" />
+      <img src="https://logo.clearbit.com/keep.google.com?size=100" alt="Google Keep logo" />
+      <img src="https://logo.clearbit.com/dropbox.com?size=100" alt="Dropbox logo" />
+      <img src="https://logo.clearbit.com/slack.com?size=100" alt="Slack logo" />
     </div>
-    <div id="overview" class="tab-content active">
-      <div class="card">
-        <h2>Introduction</h2>
-        <p>MindfulNotes combines note-taking with mindfulness prompts to help you organize thoughts and maintain mental well-being.</p>
+  </section>
+
+  <section id="features" class="features">
+    <h2>Focus-Filled Features</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>Guided Prompts</h3>
+        <p>Receive mindfulness prompts that encourage reflection as you write.</p>
+      </div>
+      <div class="feature">
+        <h3>Smart Organization</h3>
+        <p>Categorize notes effortlessly and find what you need instantly.</p>
+      </div>
+      <div class="feature">
+        <h3>Reflective Journals</h3>
+        <p>Track your growth with daily, weekly, and monthly reflections.</p>
       </div>
     </div>
-    <div id="features" class="tab-content">
-      <div class="card">
-        <h2>User Journeys</h2>
+  </section>
+
+  <section class="testimonial">
+    <blockquote>"MindfulNotes keeps my thoughts organized and my mind at ease."</blockquote>
+    <p>- Jamie, Writer</p>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <h2>Plans for Every Mind</h2>
+    <div class="pricing-table">
+      <div class="plan">
+        <h3>Basic</h3>
+        <p><strong>$0/mo</strong></p>
         <ul>
-          <li>Capture ideas and reflect with guided prompts.</li>
-          <li>Create journals for different aspects of your life.</li>
-          <li>Review past notes to track personal growth.</li>
+          <li>Unlimited notes</li>
+          <li>Daily prompts</li>
+          <li>Cloud sync</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Premium</h3>
+        <p><strong>$4/mo</strong></p>
+        <ul>
+          <li>Advanced prompts</li>
+          <li>Export options</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Lifetime</h3>
+        <p><strong>$50</strong></p>
+        <ul>
+          <li>All Premium features</li>
+          <li>One-time purchase</li>
+          <li>Early access to new tools</li>
         </ul>
       </div>
     </div>
-    <div id="pricing" class="tab-content">
-      <div class="pricing-cards">
-        <div class="pricing-card">
-          <h3>Free</h3>
-          <p>Unlimited notes with basic prompts.</p>
-          <p><strong>$0/mo</strong></p>
-        </div>
-        <div class="pricing-card">
-          <h3>Premium</h3>
-          <p>Advanced reflections and export options.</p>
-          <p><strong>$4/mo</strong></p>
-        </div>
-        <div class="pricing-card">
-          <h3>Lifetime</h3>
-          <p>Full access with a one-time purchase.</p>
-          <p><strong>$50</strong></p>
-        </div>
-      </div>
-    </div>
-  </main>
+  </section>
+
+  <section class="final-cta">
+    <h2>Find Your Focus Today</h2>
+    <p>Join MindfulNotes and start a more intentional journaling journey.</p>
+    <a href="#">Get Started</a>
+  </section>
+
   <footer>
-    &copy; 2024 MindfulNotes. All rights reserved.
+    <p>&copy; 2024 MindfulNotes. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
   </footer>
-  <script>
-    const tabs = document.querySelectorAll('.tabs button');
-    const contents = document.querySelectorAll('.tab-content');
-    tabs.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabs.forEach(b => b.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
