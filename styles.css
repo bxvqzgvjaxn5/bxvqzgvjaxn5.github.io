@@ -6,6 +6,55 @@ body {
   background: #f9f9f9;
   color: #333;
 }
+a {
+  color: #0645ad;
+}
+a:visited {
+  color: #0b0080;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+.main-nav {
+  display: flex;
+  gap: 15px;
+  padding: 10px 20px;
+  background: #f0f0f0;
+}
+.main-nav a {
+  text-decoration: none;
+}
+.main-nav a:hover,
+.main-nav a:focus {
+  text-decoration: underline;
+}
+
+.black-theme {
+  background: #000;
+  color: #fff;
+}
+.black-theme .main-nav {
+  background: #000;
+}
+.black-theme .main-nav a {
+  color: #1e90ff;
+}
+.black-theme .hero {
+  background: linear-gradient(135deg, #000, #333);
+}
+.black-theme .pricing,
+.black-theme .journey {
+  background: #111;
+}
+.black-theme .pricing-card {
+  background: #222;
+}
+.black-theme .icon {
+  background: #333;
+  color: #fff;
+}
 
 .hero {
   padding: 80px 20px;
