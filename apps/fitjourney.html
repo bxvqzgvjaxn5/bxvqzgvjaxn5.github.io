@@ -9,12 +9,25 @@
     header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
     .logo { font-weight: bold; font-size: 1.5rem; }
     nav a { margin: 0 15px; text-decoration: none; color: #1a1a1a; }
-    .hero { text-align: center; padding: 100px 20px; background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
+    .cta { padding: 15px 30px; background: #1a1a1a; color: #fff; text-decoration: none; border-radius: 5px; display: inline-block; }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(120deg, #a1c4fd, #c2e9fb, #fbc2eb);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     .hero h1 { font-size: 3rem; margin-bottom: 20px; }
     .hero p { font-size: 1.2rem; margin-bottom: 40px; }
-    .hero .cta { padding: 15px 30px; background: #1a1a1a; color: #fff; text-decoration: none; border-radius: 5px; margin: 0 10px; }
-    .logos { display: flex; justify-content: center; gap: 40px; padding: 40px 20px; }
-    .logos div { width: 100px; height: 40px; background: #e5e5e5; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+    .hero .cta { margin: 0 10px; }
+    .logos { display: flex; justify-content: center; gap: 40px; padding: 40px 20px; flex-wrap: wrap; }
+    .logos img { width: 100px; height: auto; filter: grayscale(100%); opacity: 0.7; transition: filter 0.3s, opacity 0.3s; }
+    .logos img:hover { filter: none; opacity: 1; }
     .features { padding: 80px 20px; background: #f9f9f9; }
     .features h2 { text-align: center; margin-bottom: 60px; }
     .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
@@ -33,6 +46,17 @@
     .final-cta a { padding: 15px 30px; background: #1a1a1a; color: #fff; text-decoration: none; border-radius: 5px; }
     footer { background: #1a1a1a; color: #fff; text-align: center; padding: 20px; }
     footer a { color: #fff; margin: 0 10px; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; padding: 20px; }
+      nav { margin: 10px 0; }
+      nav a { margin: 5px 10px; display: inline-block; }
+      header .cta { margin-top: 10px; padding: 10px 20px; }
+      .hero { padding: 60px 20px; }
+      .hero h1 { font-size: 2rem; }
+      .hero .cta { margin: 10px 0; width: 100%; max-width: 250px; }
+      .logos { gap: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -54,10 +78,10 @@
   </section>
 
   <section class="logos">
-    <div>Logo1</div>
-    <div>Logo2</div>
-    <div>Logo3</div>
-    <div>Logo4</div>
+    <img src="https://logo.clearbit.com/nike.com?size=100" alt="Nike logo" />
+    <img src="https://logo.clearbit.com/adidas.com?size=100" alt="Adidas logo" />
+    <img src="https://logo.clearbit.com/underarmour.com?size=100" alt="Under Armour logo" />
+    <img src="https://logo.clearbit.com/fitbit.com?size=100" alt="Fitbit logo" />
   </section>
 
   <section id="features" class="features">
