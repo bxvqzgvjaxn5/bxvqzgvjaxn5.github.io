@@ -5,151 +5,126 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FitJourney</title>
   <style>
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #ff7e5f, #feb47b);
-      color: #fff;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px;
-    }
-    header h1 {
-      font-size: 3rem;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    header p {
-      margin: 10px 0 0;
-      font-size: 1.2rem;
-      font-style: italic;
-    }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 8px;
-    }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .tabs button {
-      background: rgba(255,255,255,0.2);
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .tabs button.active {
-      background: #fff;
-      color: #ff7e5f;
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .card {
-      background: #fff;
-      color: #333;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .pricing-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .pricing-card {
-      flex: 1 1 200px;
-      background: #fff;
-      color: #333;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .pricing-card h3 { margin-top: 0; }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.3);
-    }
+    body { margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+    .logo { font-weight: bold; font-size: 1.5rem; }
+    nav a { margin: 0 15px; text-decoration: none; color: #1a1a1a; }
+    .hero { text-align: center; padding: 100px 20px; background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
+    .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 40px; }
+    .hero .cta { padding: 15px 30px; background: #1a1a1a; color: #fff; text-decoration: none; border-radius: 5px; margin: 0 10px; }
+    .logos { display: flex; justify-content: center; gap: 40px; padding: 40px 20px; }
+    .logos div { width: 100px; height: 40px; background: #e5e5e5; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+    .features { padding: 80px 20px; background: #f9f9f9; }
+    .features h2 { text-align: center; margin-bottom: 60px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .feature { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+    .feature h3 { margin-top: 0; }
+    .testimonial { padding: 80px 20px; text-align: center; }
+    .testimonial blockquote { font-size: 1.2rem; font-style: italic; margin: 0 auto 20px; max-width: 600px; }
+    .pricing { background: #f9f9f9; padding: 80px 20px; }
+    .pricing h2 { text-align: center; margin-bottom: 60px; }
+    .pricing-table { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+    .plan { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); flex: 1 1 250px; text-align: center; }
+    .plan h3 { margin-top: 0; }
+    .plan ul { list-style: none; padding: 0; }
+    .plan li { margin: 10px 0; }
+    .final-cta { text-align: center; padding: 80px 20px; }
+    .final-cta a { padding: 15px 30px; background: #1a1a1a; color: #fff; text-decoration: none; border-radius: 5px; }
+    footer { background: #1a1a1a; color: #fff; text-align: center; padding: 20px; }
+    footer a { color: #fff; margin: 0 10px; text-decoration: none; }
   </style>
 </head>
 <body>
   <header>
-    <h1>FitJourney</h1>
-    <p>"Every step counts"</p>
+    <div class="logo">FitJourney</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="cta" href="#">Sign Up</a>
   </header>
-  <main>
-    <div class="tabs">
-      <button class="active" data-tab="overview">Overview</button>
-      <button data-tab="features">Features</button>
-      <button data-tab="pricing">Pricing</button>
-    </div>
-    <div id="overview" class="tab-content active">
-      <div class="card">
-        <h2>Introduction</h2>
-        <p>FitJourney helps you stay active by tracking workouts, monitoring progress, and providing personalized fitness goals.</p>
+
+  <section class="hero">
+    <h1>Elevate Your Fitness Journey</h1>
+    <p>Track workouts, monitor progress, and get personalized insights to stay motivated every day.</p>
+    <a class="cta" href="#pricing">Start Free Trial</a>
+    <a class="cta" href="#features">See Features</a>
+  </section>
+
+  <section class="logos">
+    <div>Logo1</div>
+    <div>Logo2</div>
+    <div>Logo3</div>
+    <div>Logo4</div>
+  </section>
+
+  <section id="features" class="features">
+    <h2>Powerful Tools for Every Athlete</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>Smart Tracking</h3>
+        <p>Automatically log workouts and analyze performance with AI-driven insights.</p>
+      </div>
+      <div class="feature">
+        <h3>Goal Planning</h3>
+        <p>Set custom goals and receive tailored plans that adapt as you improve.</p>
+      </div>
+      <div class="feature">
+        <h3>Community Challenges</h3>
+        <p>Join group challenges to compete with friends and stay accountable.</p>
       </div>
     </div>
-    <div id="features" class="tab-content">
-      <div class="card">
-        <h2>User Journeys</h2>
+  </section>
+
+  <section class="testimonial">
+    <blockquote>"FitJourney keeps me on track and pushes me to reach new milestones every week."</blockquote>
+    <p>- Alex, Marathon Runner</p>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <h2>Simple Pricing</h2>
+    <div class="pricing-table">
+      <div class="plan">
+        <h3>Basic</h3>
+        <p><strong>$0/mo</strong></p>
         <ul>
-          <li>Log daily workouts and compare performance over time.</li>
-          <li>Join challenges with friends for extra motivation.</li>
-          <li>Receive tailored workout plans based on your goals.</li>
+          <li>Workout logging</li>
+          <li>Basic analytics</li>
+          <li>Community access</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Pro</h3>
+        <p><strong>$10/mo</strong></p>
+        <ul>
+          <li>Personalized plans</li>
+          <li>Advanced analytics</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Elite</h3>
+        <p><strong>$25/mo</strong></p>
+        <ul>
+          <li>1-on-1 coaching</li>
+          <li>Nutrition guidance</li>
+          <li>Exclusive challenges</li>
         </ul>
       </div>
     </div>
-    <div id="pricing" class="tab-content">
-      <div class="pricing-cards">
-        <div class="pricing-card">
-          <h3>Free</h3>
-          <p>Basic workout logging and progress charts.</p>
-          <p><strong>$0/mo</strong></p>
-        </div>
-        <div class="pricing-card">
-          <h3>Plus</h3>
-          <p>Personalized plans and challenge features.</p>
-          <p><strong>$8/mo</strong></p>
-        </div>
-        <div class="pricing-card">
-          <h3>Coach</h3>
-          <p>One-on-one virtual coaching.</p>
-          <p><strong>$20/mo</strong></p>
-        </div>
-      </div>
-    </div>
-  </main>
+  </section>
+
+  <section class="final-cta">
+    <h2>Ready to Transform?</h2>
+    <p>Join FitJourney today and unlock your full potential.</p>
+    <a href="#">Get Started</a>
+  </section>
+
   <footer>
-    &copy; 2024 FitJourney. All rights reserved.
+    <p>&copy; 2024 FitJourney. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
   </footer>
-  <script>
-    const tabs = document.querySelectorAll('.tabs button');
-    const contents = document.querySelectorAll('.tab-content');
-    tabs.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabs.forEach(b => b.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
