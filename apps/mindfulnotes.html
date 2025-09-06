@@ -4,149 +4,71 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MindfulNotes</title>
-  <style>
-    body {
-      font-family: 'Georgia', serif;
-      margin: 0;
-      background: #f0e6ff;
-      color: #333;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #d8c7ff, #b8a8ff);
-      color: #333;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      font-style: italic;
-    }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .tabs button {
-      background: #d8c7ff;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      color: #333;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .tabs button.active {
-      background: #b8a8ff;
-      color: #fff;
-    }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    .card {
-      background: #fff;
-      color: #333;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .pricing-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .pricing-card {
-      flex: 1 1 200px;
-      background: #fff;
-      color: #333;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .pricing-card h3 { margin-top: 0; }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: linear-gradient(135deg, #d8c7ff, #b8a8ff);
-      color: #333;
-    }
-  </style>
+  <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
-  <header>
+  <section class="hero">
     <h1>MindfulNotes</h1>
-    <p>"Write with clarity, reflect with calm"</p>
-  </header>
-  <main>
-    <div class="tabs">
-      <button class="active" data-tab="overview">Overview</button>
-      <button data-tab="features">Features</button>
-      <button data-tab="pricing">Pricing</button>
-    </div>
-    <div id="overview" class="tab-content active">
-      <div class="card">
-        <h2>Introduction</h2>
-        <p>MindfulNotes combines note-taking with mindfulness prompts to help you organize thoughts and maintain mental well-being.</p>
-      </div>
-    </div>
-    <div id="features" class="tab-content">
-      <div class="card">
-        <h2>User Journeys</h2>
+    <p>Write with clarity, reflect with calm</p>
+    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200" alt="Notebook and coffee" />
+  </section>
+
+  <section class="pricing">
+    <h2>Pricing</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Free</h3>
         <ul>
-          <li>Capture ideas and reflect with guided prompts.</li>
-          <li>Create journals for different aspects of your life.</li>
-          <li>Review past notes to track personal growth.</li>
+          <li>Unlimited notes</li>
+          <li>Basic prompts</li>
         </ul>
+        <p><strong>$0/mo</strong></p>
+      </div>
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <ul>
+          <li>Advanced reflections</li>
+          <li>Export options</li>
+        </ul>
+        <p><strong>$4/mo</strong></p>
+      </div>
+      <div class="pricing-card">
+        <h3>Lifetime</h3>
+        <ul>
+          <li>Full access forever</li>
+          <li>Priority updates</li>
+        </ul>
+        <p><strong>$50</strong></p>
       </div>
     </div>
-    <div id="pricing" class="tab-content">
-      <div class="pricing-cards">
-        <div class="pricing-card">
-          <h3>Free</h3>
-          <p>Unlimited notes with basic prompts.</p>
-          <p><strong>$0/mo</strong></p>
-        </div>
-        <div class="pricing-card">
-          <h3>Premium</h3>
-          <p>Advanced reflections and export options.</p>
-          <p><strong>$4/mo</strong></p>
-        </div>
-        <div class="pricing-card">
-          <h3>Lifetime</h3>
-          <p>Full access with a one-time purchase.</p>
-          <p><strong>$50</strong></p>
-        </div>
+  </section>
+
+  <section class="journey">
+    <h2>Your Journey</h2>
+    <div class="timeline">
+      <div class="step">
+        <div class="icon">🧠</div>
+        <p>Capture your thoughts and ideas.</p>
+      </div>
+      <div class="step">
+        <div class="icon">✍️</div>
+        <p>Reflect with guided prompts.</p>
+      </div>
+      <div class="step">
+        <div class="icon">📈</div>
+        <p>Review growth over time.</p>
       </div>
     </div>
-  </main>
-  <footer>
-    &copy; 2024 MindfulNotes. All rights reserved.
-  </footer>
+  </section>
+
   <script>
-    const tabs = document.querySelectorAll('.tabs button');
-    const contents = document.querySelectorAll('.tab-content');
-    tabs.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabs.forEach(b => b.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
+    const steps = document.querySelectorAll('.step');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     });
+    steps.forEach(step => observer.observe(step));
   </script>
 </body>
 </html>

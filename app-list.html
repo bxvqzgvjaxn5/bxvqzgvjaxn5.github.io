@@ -4,50 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>App List</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 40px;
-      background: #f4f4f4;
-      color: #333;
-    }
-    h1 {
-      text-align: center;
+    .apps {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
     .app {
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin: 20px auto;
-      max-width: 600px;
       padding: 20px;
+      margin-bottom: 20px;
     }
-    .app h2 {
-      margin-top: 0;
-    }
-    .app a {
-      color: #1DA1F2;
-      text-decoration: none;
-    }
-    .app a:hover {
-      text-decoration: underline;
-    }
+    .app h3 { margin-top: 0; }
+    .app a { color: #0077cc; text-decoration: none; }
+    .app a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <h1>Our Apps</h1>
-  <div class="app">
-    <h2><a href="apps/taskmaster-pro.html">TaskMaster Pro</a></h2>
-    <p>Organize tasks and boost productivity with smart scheduling and reminders.</p>
+  <section class="hero">
+    <h1>Our Apps</h1>
+    <p>Discover the tools that power your workflow</p>
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200" alt="App showcase" />
+  </section>
+
+  <div class="apps">
+    <div class="app">
+      <h3><a href="apps/taskmaster-pro.html">TaskMaster Pro</a></h3>
+      <p>Organize tasks and boost productivity with smart scheduling and reminders.</p>
+    </div>
+    <div class="app">
+      <h3><a href="apps/fitjourney.html">FitJourney</a></h3>
+      <p>Track workouts, monitor progress, and stay motivated on your fitness path.</p>
+    </div>
+    <div class="app">
+      <h3><a href="apps/mindfulnotes.html">MindfulNotes</a></h3>
+      <p>Capture thoughts and practice mindfulness with a serene note-taking experience.</p>
+    </div>
   </div>
-  <div class="app">
-    <h2><a href="apps/fitjourney.html">FitJourney</a></h2>
-    <p>Track workouts, monitor progress, and stay motivated on your fitness path.</p>
-  </div>
-  <div class="app">
-    <h2><a href="apps/mindfulnotes.html">MindfulNotes</a></h2>
-    <p>Capture thoughts and practice mindfulness with a serene note-taking experience.</p>
-  </div>
+
+  <section class="pricing">
+    <h2>Pricing</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Free</h3>
+        <ul>
+          <li>Access to basic apps</li>
+          <li>Community support</li>
+        </ul>
+        <p><strong>$0</strong></p>
+      </div>
+      <div class="pricing-card">
+        <h3>Pro Bundle</h3>
+        <ul>
+          <li>All current apps</li>
+          <li>Early access to new tools</li>
+        </ul>
+        <p><strong>$10/mo</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey">
+    <h2>Your Journey</h2>
+    <div class="timeline">
+      <div class="step">
+        <div class="icon">1</div>
+        <p>Browse our collection of apps.</p>
+      </div>
+      <div class="step">
+        <div class="icon">2</div>
+        <p>Select the solution that fits your needs.</p>
+      </div>
+      <div class="step">
+        <div class="icon">3</div>
+        <p>Start enhancing your workflow.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const steps = document.querySelectorAll('.step');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+    steps.forEach(step => observer.observe(step));
+  </script>
 </body>
 </html>
