@@ -1,0 +1,109 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.hero {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+}
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.hero p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+.hero img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pricing {
+  padding: 60px 20px;
+  background: #fff;
+  text-align: center;
+}
+.pricing h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+.pricing-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.pricing-card {
+  flex: 1 1 250px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: #fde2e4;
+}
+.pricing-card:nth-of-type(2) { background: #e2f0cb; }
+.pricing-card:nth-of-type(3) { background: #cde1f9; }
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.pricing-card ul {
+  text-align: left;
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.journey {
+  padding: 60px 20px;
+  background: #f0f4f8;
+}
+.journey h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.timeline {
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.icon {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+.step:hover .icon {
+  background: #d1e9ff;
+}
