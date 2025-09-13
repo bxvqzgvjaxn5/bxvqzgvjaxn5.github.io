@@ -1,137 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bxvqzgvjaxn5</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      background: #000;
-      font-family: Arial, sans-serif;
-      color: #fff;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-    .panel {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px 60px;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
-    .panel h1 {
-      margin: 0 0 10px;
-      font-size: 2.5rem;
-      text-shadow: 0 0 15px rgba(255,255,255,0.8);
-    }
-    .panel h2 {
-      margin: 0 0 20px;
-      font-size: 1.5rem;
-      font-weight: normal;
-      text-shadow: 0 0 10px rgba(255,255,255,0.6);
-    }
-    .panel p {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      text-shadow: 0 0 8px rgba(255,255,255,0.4);
-    }
-    .panel a {
-      color: #1DA1F2;
-      text-decoration: none;
-    }
-    .panel a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>bxvqzgvjaxn5</title>
+    <style>
+        /* Prevent text selection on mobile */
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #0f0f0f;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .name {
+            font-size: min(3.5rem, 15vw);
+            margin-bottom: 1rem;
+            letter-spacing: min(0.5rem, 2vw);
+            animation: glow 2s ease-in-out infinite alternate;
+            text-transform: lowercase;
+            padding: 0 1rem;
+            word-break: break-all;
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                display: block;
+                word-break: break-all;
+                width: 4ch;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.2;
+                letter-spacing: 0;
+            }
+        }
+
+        .subtitle {
+            font-size: min(1.2rem, 4vw);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            letter-spacing: min(0.2rem, 1vw);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .role {
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        .role:not(:last-child):after {
+            content: "•";
+            margin-left: 0.5rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .subtitle {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .role {
+                margin: 0;
+            }
+
+            .role:not(:last-child):after {
+                content: "";
+                margin: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        .links-button {
+            padding: min(12px, 3vw) min(24px, 6vw);
+            font-size: min(1.2rem, 5vw);
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .links-button:hover {
+            background: #fff;
+            color: #0f0f0f;
+            transform: translateY(-2px);
+        }
+
+        .background-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff,
+                           0 0 20px #fff,
+                           0 0 30px #FFD700,
+                           0 0 40px #FFD700;
+            }
+            to {
+                text-shadow: 0 0 20px #fff,
+                           0 0 30px #FFD700,
+                           0 0 40px #FFD700,
+                           0 0 50px #FFD700;
+            }
+        }
+
+        @keyframes moveGrid {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(255,255,255,0.5);
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20px);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <canvas id="background"></canvas>
-  <div class="panel">
-    <h1>bxvqzgvjaxn5</h1>
-    <h2>father, software architect</h2>
-    <p>a guy who loves development and crafting things</p>
-    <p>As a software architect and father, I enjoy turning ideas into reliable solutions and sharing knowledge with the community.</p>
-    <p>When I'm not coding, I'm exploring new technologies, mentoring developers, and building side projects.</p>
-    <p>Find my work on <a href="https://github.com/bxvqzgvjaxn5" target="_blank" rel="noopener noreferrer">GitHub</a> or follow me on <a href="https://twitter.com/bxvqzgvjaxn5" target="_blank" rel="noopener noreferrer">Twitter</a> for updates.</p>
-    <p>Explore my <a href="app-list.html">app list</a> for more projects.</p>
-  </div>
-  <script>
-    const canvas = document.getElementById('background');
-    const ctx = canvas.getContext('2d');
-    let w, h;
+    <div class="background-grid"></div>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <h1 class="name">bxvqzgvjaxn5</h1>
+        <div class="subtitle">
+            <span class="role">father</span>
+            <span class="role">architect</span>
+            <span class="role">craftsman</span>
+        </div>
+        <a href="/links" class="links-button">links</a>
+    </div>
 
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    const particles = [];
-    const count = 80;
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6
-      });
-    }
-
-    function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-      ctx.fillRect(0, 0, w, h);
-
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
-      });
-
-      ctx.fillStyle = '#fff';
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      for (let i = 0; i < count; i++) {
-        for (let j = i + 1; j < count; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
-            ctx.strokeStyle = `rgba(255,255,255,${1 - dist / 100})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 20}s`;
+            particlesContainer.appendChild(particle);
         }
-      }
-
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-  </script>
+    </script>
 </body>
 </html>
+
