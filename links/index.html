@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>bxvqzgvjaxn5 - Links</title>
+    <style>
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #0f0f0f;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .name {
+            font-size: min(3.5rem, 15vw);
+            margin-bottom: 2rem;
+            letter-spacing: min(0.5rem, 2vw);
+            animation: glow 2s ease-in-out infinite alternate;
+            text-transform: lowercase;
+            padding: 0 1rem;
+            word-break: break-all;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .name:active {
+            transform: scale(0.95);
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            padding: min(12px, 3vw) min(24px, 6vw);
+            font-size: min(1.2rem, 5vw);
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            min-width: 200px;
+            display: inline-block;
+        }
+
+        .social-link:hover {
+            background: #fff;
+            color: #0f0f0f;
+            transform: translateY(-2px);
+        }
+
+        .background-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #0f0f0f;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff,
+                           0 0 20px #fff,
+                           0 0 30px #FFD700,
+                           0 0 40px #FFD700;
+            }
+            to {
+                text-shadow: 0 0 20px #fff,
+                           0 0 30px #FFD700,
+                           0 0 40px #FFD700,
+                           0 0 50px #FFD700;
+            }
+        }
+
+        @keyframes moveGrid {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(255,255,255,0.5);
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <h1 class="name" id="username">bxvqzgvjaxn5</h1>
+        <div class="links-container">
+            <a href="https://twitter.com/bxvqzgvjaxn5" target="_blank" class="social-link">Twitter</a>
+            <a href="https://github.com/bxvqzgvjaxn5" target="_blank" class="social-link">GitHub</a>
+        </div>
+    </div>
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 20}s`;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Copy to clipboard functionality
+        const username = document.getElementById('username');
+        const toast = document.getElementById('toast');
+
+        username.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText('bxvqzgvjaxn5');
+                toast.style.opacity = '1';
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+        });
+    </script>
+</body>
+</html>
